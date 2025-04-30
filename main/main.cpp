@@ -250,23 +250,32 @@ public:
     }
 };
 
-
-class ImprovementSubmissionClass {
+//Code Artifact Name: ImprovementSubmissionClass
+//Description: This portion handles the improvement requests submitted by the user and allows for the tracking of their approval status
+//Team Member(s): Zachary Castro
+//Coded Date: 04/28/2025
+class ImprovementSubmissionClass 
+{
 public:
-    string submissionID;
-    string memberID;
-    vector<string> documents;
-    Status status;
+    string submissionID; //ID that can be assigned manually or externally
+    string memberID; //ID of member requesting improvement
+    vector<string> documents;//List of documents submitted
+    Status status;//Request status
 
-    bool submitImprovementRequest(string memberID, vector<string> proofDocuments) {
+    //Assigns submitted memberID and documents
+    bool submitImprovementRequest(string memberID, vector<string> proofDocuments) 
+    {
         this->memberID = memberID;
         this->documents = proofDocuments;
-        this->status = Pending;
+        this->status = Pending;//Initial status set to Pending
         return true;
     }
 
-    string trackImprovementStatus(string requestID) {
-        switch (status) {
+    //Returns the status'
+    string trackImprovementStatus(string requestID) 
+    {
+        switch (status) 
+        {
         case Pending: return "Pending";
         case Approved: return "Approved";
         case Rejected: return "Rejected";
@@ -275,29 +284,39 @@ public:
     }
 };
 
-
-class FraudAlertClass {
+//Code Artifact Name: FraudAlertClass 
+//Description: This portion handles both the fraud reporting and the fraud case resolution for the system.
+//Team Member(s): Zachary Castro
+//Coded Date: 04/28/2025
+class FraudAlertClass 
+{
 public:
     string alertID;
     string description;
     string reporterID;
 
-    bool resolveFraudCase(string id) {
+    //Resolves the fraud case by alert ID
+    bool resolveFraudCase(string id) 
+    {
         cout << "Resolving fraud case with ID: " << id << endl;
         return true;
     }
 
-    void logFraudIncident(string details) {
+    //Logs fraud details to a text file
+    void logFraudIncident(string details) 
+    {
         cout << "Logging fraud incident: " << details << endl;
         ofstream file("fraud_alerts.txt", ios::app);
-        if (file.is_open()) {
+        if (file.is_open()) 
+        {
             file << "Alert ID: " << alertID << "\n"
                 << "Reporter ID: " << reporterID << "\n"
                 << "Description: " << details << "\n"
                 << "---\n";
             file.close();
         }
-        else {
+        else 
+        {
             cout << "Failed to save fraud incident to file.\n";
         }
     }
@@ -454,7 +473,10 @@ public:
     }
 };
 
-
+//Code Artifact Name: Main
+//Description: This portion handles the login, registration, and user interface text for the CIBIL system.
+//Team Member(s): Edward Broussard, Zachary Castro, and Corran Chastain
+//Coded Date: 04/27/2025
 int main() {
     srand(time(0));  
 
